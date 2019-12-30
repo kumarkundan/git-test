@@ -1,8 +1,11 @@
 pipeline {
-    agent {
-    label 'docker' 
-  }
+    agent any
+	
     stages {
+	    stage('Initialize'){
+        def dockerHome = tool 'myDocker'
+        env.PATH = "${dockerHome}/bin:${env.PATH}"
+    }
         stage('One') {
                 steps {
                         echo 'Hi, this is Zulaikha from edureka'
